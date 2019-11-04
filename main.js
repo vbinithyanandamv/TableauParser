@@ -1,9 +1,10 @@
 
 let dataType = {
   'with_actual_data' : with_actual_data,
+  'no_period' : no_period;
 }
 
-let tableauJson = dataType[' with_actual_data'];
+let tableauJson = dataType['with_actual_data'];
 let categoryData = new Map();
 
 let periodIndex = 0;
