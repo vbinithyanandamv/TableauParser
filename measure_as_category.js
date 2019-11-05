@@ -1,4 +1,4 @@
-[
+let measure_as_category = [
    {
       "_data":[
          [

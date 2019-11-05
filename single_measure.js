@@ -1,4 +1,4 @@
-{
+let single_measure = [{
    "_data":[
       [
          {
@@ -1111,4 +1111,4 @@
    "_isTotalRowCountLimited":false,
    "_isSummaryData":false,
    "_name":"Underlying Data Table"
-}
+}];
