@@ -1,20 +1,21 @@
 
 let dataFormatMap = {
   'with_actual_data' : with_actual_data,
-  'no_period' : no_period,
+  'no_periods' : no_periods,
   'measure_as_category' : measure_as_category,
   'no_category': no_category,
   'single_measure': single_measure
 }
 
-let dataType = 'with_actual_data';
-let tableauJson = dataFormatMap.dataType;
+let dataType = 'single_measure';
+let tableauJson = dataFormatMap[dataType];
 let categoryData = new Map();
 
 let periodIndex = 0;
 let periods =[];
 
-if(dataType === 'with_actual_data'){
+//series should be based on number of measures
+if(dataType === 'with_actual_data' || dataType === "single_measure"){
     //get all periods sepeartely
     tableauJson[0]._data.map((data) =>{
         let periodData = {
@@ -22,14 +23,15 @@ if(dataType === 'with_actual_data'){
             'label':data[3]._formattedValue
         }   
         if(!periods.some(period => period.id === data[3]._value)){
-        periods.push(periodData)
+            periods.push(periodData)
         }
     });
 
-    let numberOfPeriods = periods.length;
+    let numberOfPeriods = periods.length;  //can be get from editor also 
     let level;
+    let seriesLength = dataType === "single_measure" ? 1 : 2;
 
-    let levelValue = { 0 : 2 , 1 : 0}; // data map
+    let levelValue = { 0 : 2 , 1 : 0}; // data map need to be done based on data utility
 
     tableauJson[0]._data.map((data) =>{
         
@@ -55,7 +57,7 @@ if(dataType === 'with_actual_data'){
                                 'id':children._value,
                                 'label':children._formattedValue,
                                 'children':new Map(),
-                                'series':[new Map(),new Map()],
+                                'series':[],
                                 'parent': parent,
                             }
                     )   
@@ -69,14 +71,20 @@ if(dataType === 'with_actual_data'){
 
         //update data from children to parent
         let updateData = (node) =>{
+            node.series[0] = !node.series[0] ? new Map() : node.series[0]
             if(!node.series[0].get(data[3]._value)){
-                node.series[0].set(data[3]._value,data[4]._value);  100
-                node.series[1].set(data[3]._value,data[5]._value);  14
+                node.series[0].set(data[3]._value,data[4]._value);
+                if(dataType !== 'single_measure'){
+                    node.series[1] = !node.series[1] ? new Map() : node.series[1]
+                    node.series[1].set(data[3]._value,data[5]._value); 
+                }
             }else{
                 let budget = node.series[0].get(data[3]._value) + data[4]._value;
-                let forecast = node.series[0].get(data[3]._value) + data[5]._value;
                 node.series[0].set(data[3]._value,budget);
-                node.series[1].set(data[3]._value,forecast);               
+                if(dataType !== 'single_measure'){
+                    let forecast = node.series[0].get(data[3]._value) + data[5]._value;
+                    node.series[1].set(data[3]._value,forecast); 
+                }                
             }
             if(node.parent){
                 updateData(node.parent);
@@ -94,7 +102,11 @@ if(dataType === 'with_actual_data'){
     categoryData.map((node) =>{
         let maptoArray = (node) => {
         node.children = Array.from(node.children.values());
-        node.series = [Array.from(node.series[0].values()) , Array.from(node.series[0].values())]
+        if(dataType == 'single_measure'){
+            node.series = [Array.from(node.series[0].values())]
+        }else{
+            node.series = [Array.from(node.series[0].values()) , Array.from(node.series[1].values())]
+        }
         if(!node.children){
             return;
         }
@@ -106,15 +118,68 @@ if(dataType === 'with_actual_data'){
         maptoArray(node);
     })
 
+    let seriesNames = []
+
+    if(dataType == 'single_measure'){
+        seriesNames = [tableauJson[0]._columns[4]._fieldName]
+    }else{
+        seriesNames = [tableauJson[0]._columns[4]._fieldName , tableauJson[0]._columns[5]._fieldName]
+    }
+
     let props = {
         'periods':periods,
         'rows':categoryData,
         'metadata':{
             'periods':periods,
-            'series':[tableauJson[0]._columns[4]._fieldName , tableauJson[0]._columns[5]._fieldName],
+            'series':seriesNames,
         }
     }
 
     console.log(props);
-
 }
+if(dataType === 'no_periods'){
+  
+  let period_length = tableauJson[0]._columns.length - 1 //dimension length
+  let number_of_periods = 12 //should be coming from editor
+  let number_of_series =  period_length / number_of_periods;
+
+  let rows = new Map();
+  
+  tableauJson[0]._data.map((row_data) =>{
+   if(!rows.has(row_data[0]._value)){ //First add root
+        rows.set(row_data[0]._value,{
+                'id':row_data[0]._value, 
+                'label':row_data[0]._formattedValue,
+                'series': []
+            })
+        }
+        //update data based on periods
+        let i;
+        for(i=1;i<=period_length;i++){  //i == count should be number of dimension
+            let seriesIndex = Math.ceil(i/12) - 1;
+            let currentRow = rows.get(row_data[0]._value);
+            currentRow.series[seriesIndex] = currentRow.series[seriesIndex] ? currentRow.series[seriesIndex] : [];
+            currentRow.series[seriesIndex].push(row_data[i]._value);
+        }
+    });
+
+    //get periods
+    let periods = [];
+    for(i=1;i<=period_length;i++){  //i == count should be number of dimension
+       periods.push(tableauJson[0]._columns[i]._fieldName);
+    }
+
+    rows = Array.from(rows.values());
+    
+    let props = {
+        'periods':[{id: "1", label: "1"}],
+        'rows':rows,
+        'metadata':{
+            'periods':periods,
+            'series':[],
+        }
+    }
+
+    console.log(JSON.stringify(props));
+} 
+
