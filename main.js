@@ -1,7 +1,10 @@
 
 let dataFormatMap = {
   'with_actual_data' : with_actual_data,
-  'no_period' : no_period
+  'no_period' : no_period,
+  'measure_as_category' : measure_as_category,
+  'no_category': no_category,
+  'single_measure': single_measure
 }
 
 let dataType = 'with_actual_data';
