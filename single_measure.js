@@ -1,1737 +1,1089 @@
-let single_measure = [{
+{
    "_data":[
       [
          {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2018-01-01",
             "_formattedValue":"1/1/2018"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":100,
-            "_formattedValue":"100.000"
+            "_value":10634,
+            "_formattedValue":"10,634.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2018-01-01",
-            "_formattedValue":"1/1/2018"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":1000,
-            "_formattedValue":"1,000.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2018-02-01",
             "_formattedValue":"2/1/2018"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":110,
-            "_formattedValue":"110.000"
+            "_value":5227,
+            "_formattedValue":"5,227.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2018-02-01",
-            "_formattedValue":"2/1/2018"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":120,
-            "_formattedValue":"120.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2018-03-01",
             "_formattedValue":"3/1/2018"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":120,
-            "_formattedValue":"120.000"
+            "_value":1753,
+            "_formattedValue":"1,753.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2018-03-01",
-            "_formattedValue":"3/1/2018"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":130,
-            "_formattedValue":"130.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2018-04-01",
             "_formattedValue":"4/1/2018"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":140,
-            "_formattedValue":"140.000"
+            "_value":9708,
+            "_formattedValue":"9,708.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2018-04-01",
-            "_formattedValue":"4/1/2018"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":150,
-            "_formattedValue":"150.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2018-05-01",
             "_formattedValue":"5/1/2018"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":160,
-            "_formattedValue":"160.000"
+            "_value":3872,
+            "_formattedValue":"3,872.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2018-05-01",
-            "_formattedValue":"5/1/2018"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":170,
-            "_formattedValue":"170.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2018-06-01",
             "_formattedValue":"6/1/2018"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":180,
-            "_formattedValue":"180.000"
+            "_value":3827,
+            "_formattedValue":"3,827.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2018-06-01",
-            "_formattedValue":"6/1/2018"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":190,
-            "_formattedValue":"190.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2018-07-01",
             "_formattedValue":"7/1/2018"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":200,
-            "_formattedValue":"200.000"
+            "_value":6102,
+            "_formattedValue":"6,102.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2018-07-01",
-            "_formattedValue":"7/1/2018"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":210,
-            "_formattedValue":"210.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2018-08-01",
             "_formattedValue":"8/1/2018"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":220,
-            "_formattedValue":"220.000"
+            "_value":4728,
+            "_formattedValue":"4,728.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2018-08-01",
-            "_formattedValue":"8/1/2018"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":230,
-            "_formattedValue":"230.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2018-09-01",
             "_formattedValue":"9/1/2018"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":240,
-            "_formattedValue":"240.000"
+            "_value":7347,
+            "_formattedValue":"7,347.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2018-09-01",
-            "_formattedValue":"9/1/2018"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":250,
-            "_formattedValue":"250.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2018-10-01",
             "_formattedValue":"10/1/2018"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":260,
-            "_formattedValue":"260.000"
+            "_value":9522,
+            "_formattedValue":"9,522.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2018-10-01",
-            "_formattedValue":"10/1/2018"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":270,
-            "_formattedValue":"270.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2018-11-01",
             "_formattedValue":"11/1/2018"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":280,
-            "_formattedValue":"280.000"
+            "_value":7029,
+            "_formattedValue":"7,029.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2018-11-01",
-            "_formattedValue":"11/1/2018"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":290,
-            "_formattedValue":"290.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2018-12-01",
             "_formattedValue":"12/1/2018"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":300,
-            "_formattedValue":"300.000"
+            "_value":7056,
+            "_formattedValue":"7,056.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2018-12-01",
-            "_formattedValue":"12/1/2018"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":310,
-            "_formattedValue":"310.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2019-01-01",
             "_formattedValue":"1/1/2019"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":320,
-            "_formattedValue":"320.000"
+            "_value":11224,
+            "_formattedValue":"11,224.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2019-01-01",
-            "_formattedValue":"1/1/2019"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":330,
-            "_formattedValue":"330.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2019-02-01",
             "_formattedValue":"2/1/2019"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":340,
-            "_formattedValue":"340.000"
+            "_value":5857,
+            "_formattedValue":"5,857.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2019-02-01",
-            "_formattedValue":"2/1/2019"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":350,
-            "_formattedValue":"350.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2019-03-01",
             "_formattedValue":"3/1/2019"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":360,
-            "_formattedValue":"360.000"
+            "_value":8583,
+            "_formattedValue":"8,583.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2019-03-01",
-            "_formattedValue":"3/1/2019"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":370,
-            "_formattedValue":"370.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2019-04-01",
             "_formattedValue":"4/1/2019"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":380,
-            "_formattedValue":"380.000"
+            "_value":10156,
+            "_formattedValue":"10,156.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2019-04-01",
-            "_formattedValue":"4/1/2019"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":390,
-            "_formattedValue":"390.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2019-05-01",
             "_formattedValue":"5/1/2019"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":400,
-            "_formattedValue":"400.000"
+            "_value":8254,
+            "_formattedValue":"8,254.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2019-05-01",
-            "_formattedValue":"5/1/2019"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":410,
-            "_formattedValue":"410.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2019-06-01",
             "_formattedValue":"6/1/2019"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":420,
-            "_formattedValue":"420.000"
+            "_value":2871,
+            "_formattedValue":"2,871.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2019-06-01",
-            "_formattedValue":"6/1/2019"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":430,
-            "_formattedValue":"430.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2019-07-01",
             "_formattedValue":"7/1/2019"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":440,
-            "_formattedValue":"440.000"
+            "_value":6879,
+            "_formattedValue":"6,879.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2019-07-01",
-            "_formattedValue":"7/1/2019"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":450,
-            "_formattedValue":"450.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2019-08-01",
             "_formattedValue":"8/1/2019"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":460,
-            "_formattedValue":"460.000"
+            "_value":9720,
+            "_formattedValue":"9,720.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2019-08-01",
-            "_formattedValue":"8/1/2019"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":470,
-            "_formattedValue":"470.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2019-09-01",
             "_formattedValue":"9/1/2019"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":480,
-            "_formattedValue":"480.000"
+            "_value":3030,
+            "_formattedValue":"3,030.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2019-09-01",
-            "_formattedValue":"9/1/2019"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":490,
-            "_formattedValue":"490.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2019-10-01",
             "_formattedValue":"10/1/2019"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":500,
-            "_formattedValue":"500.000"
+            "_value":2147,
+            "_formattedValue":"2,147.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2019-10-01",
-            "_formattedValue":"10/1/2019"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":510,
-            "_formattedValue":"510.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2019-11-01",
             "_formattedValue":"11/1/2019"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":520,
-            "_formattedValue":"520.000"
+            "_value":6547,
+            "_formattedValue":"6,547.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2019-11-01",
-            "_formattedValue":"11/1/2019"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":530,
-            "_formattedValue":"530.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2019-12-01",
             "_formattedValue":"12/1/2019"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":540,
-            "_formattedValue":"540.000"
+            "_value":5008,
+            "_formattedValue":"5,008.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2019-12-01",
-            "_formattedValue":"12/1/2019"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":550,
-            "_formattedValue":"550.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2020-01-01",
             "_formattedValue":"1/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":100,
-            "_formattedValue":"100.000"
+            "_value":3872,
+            "_formattedValue":"3,872.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2020-01-01",
-            "_formattedValue":"1/1/2020"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":1000,
-            "_formattedValue":"1,000.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2020-02-01",
             "_formattedValue":"2/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":110,
-            "_formattedValue":"110.000"
+            "_value":3827,
+            "_formattedValue":"3,827.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2020-02-01",
-            "_formattedValue":"2/1/2020"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":120,
-            "_formattedValue":"120.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2020-03-01",
             "_formattedValue":"3/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":120,
-            "_formattedValue":"120.000"
+            "_value":6102,
+            "_formattedValue":"6,102.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2020-03-01",
-            "_formattedValue":"3/1/2020"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":130,
-            "_formattedValue":"130.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2020-04-01",
             "_formattedValue":"4/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":140,
-            "_formattedValue":"140.000"
+            "_value":4728,
+            "_formattedValue":"4,728.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2020-04-01",
-            "_formattedValue":"4/1/2020"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":150,
-            "_formattedValue":"150.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2020-05-01",
             "_formattedValue":"5/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
-            "_value":160,
-            "_formattedValue":"160.000"
+            "_value":7347,
+            "_formattedValue":"7,347.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
-            "_value":"2020-05-01",
-            "_formattedValue":"5/1/2020"
+            "_value":"2020-06-01",
+            "_formattedValue":"6/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"TN",
+            "_formattedValue":"TN"
+         },
+         {
+            "_value":9522,
+            "_formattedValue":"9,522.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2020-07-01",
+            "_formattedValue":"7/1/2020"
+         },
+         {
+            "_value":"TN",
+            "_formattedValue":"TN"
+         },
+         {
+            "_value":7029,
+            "_formattedValue":"7,029.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2020-08-01",
+            "_formattedValue":"8/1/2020"
+         },
+         {
+            "_value":"TN",
+            "_formattedValue":"TN"
+         },
+         {
+            "_value":10156,
+            "_formattedValue":"10,156.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2020-09-01",
+            "_formattedValue":"9/1/2020"
+         },
+         {
+            "_value":"TN",
+            "_formattedValue":"TN"
+         },
+         {
+            "_value":8254,
+            "_formattedValue":"8,254.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2020-10-01",
+            "_formattedValue":"10/1/2020"
+         },
+         {
+            "_value":"TN",
+            "_formattedValue":"TN"
+         },
+         {
+            "_value":2871,
+            "_formattedValue":"2,871.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2020-11-01",
+            "_formattedValue":"11/1/2020"
+         },
+         {
+            "_value":"TN",
+            "_formattedValue":"TN"
+         },
+         {
+            "_value":6879,
+            "_formattedValue":"6,879.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2020-12-01",
+            "_formattedValue":"12/1/2020"
+         },
+         {
+            "_value":"TN",
+            "_formattedValue":"TN"
          },
          {
             "_value":170,
-            "_formattedValue":"170.000"
+            "_formattedValue":"170.00"
          }
       ],
       [
          {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2019-01-01",
+            "_formattedValue":"1/1/2019"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":10920,
+            "_formattedValue":"10,920.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2019-02-01",
+            "_formattedValue":"2/1/2019"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":11053,
+            "_formattedValue":"11,053.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2019-03-01",
+            "_formattedValue":"3/1/2019"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":7128,
+            "_formattedValue":"7,128.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2019-04-01",
+            "_formattedValue":"4/1/2019"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":6147,
+            "_formattedValue":"6,147.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2019-05-01",
+            "_formattedValue":"5/1/2019"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":5341,
+            "_formattedValue":"5,341.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2019-06-01",
+            "_formattedValue":"6/1/2019"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":4050,
+            "_formattedValue":"4,050.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2019-07-01",
+            "_formattedValue":"7/1/2019"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":4126,
+            "_formattedValue":"4,126.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2019-08-01",
+            "_formattedValue":"8/1/2019"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":12135,
+            "_formattedValue":"12,135.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2019-09-01",
+            "_formattedValue":"9/1/2019"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":8794,
+            "_formattedValue":"8,794.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2019-10-01",
+            "_formattedValue":"10/1/2019"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":8506,
+            "_formattedValue":"8,506.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2019-11-01",
+            "_formattedValue":"11/1/2019"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":10377,
+            "_formattedValue":"10,377.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2019-12-01",
+            "_formattedValue":"12/1/2019"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":7577,
+            "_formattedValue":"7,577.00"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2020-01-01",
+            "_formattedValue":"1/1/2020"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":26298.6,
+            "_formattedValue":"26,298.60"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2020-02-01",
+            "_formattedValue":"2/1/2020"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":26317.2,
+            "_formattedValue":"26,317.20"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2020-03-01",
+            "_formattedValue":"3/1/2020"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":26334.6,
+            "_formattedValue":"26,334.60"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2020-04-01",
+            "_formattedValue":"4/1/2020"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":26353.2,
+            "_formattedValue":"26,353.20"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
+         },
+         {
+            "_value":"2020-05-01",
+            "_formattedValue":"5/1/2020"
+         },
+         {
+            "_value":"UP",
+            "_formattedValue":"UP"
+         },
+         {
+            "_value":26371.2,
+            "_formattedValue":"26,371.20"
+         }
+      ],
+      [
+         {
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2020-06-01",
             "_formattedValue":"6/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"UP",
+            "_formattedValue":"UP"
          },
          {
-            "_value":180,
-            "_formattedValue":"180.000"
+            "_value":26389.8,
+            "_formattedValue":"26,389.80"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2020-06-01",
-            "_formattedValue":"6/1/2020"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":190,
-            "_formattedValue":"190.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2020-07-01",
             "_formattedValue":"7/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"UP",
+            "_formattedValue":"UP"
          },
          {
-            "_value":200,
-            "_formattedValue":"200.000"
+            "_value":26407.8,
+            "_formattedValue":"26,407.80"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2020-07-01",
-            "_formattedValue":"7/1/2020"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":210,
-            "_formattedValue":"210.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2020-08-01",
             "_formattedValue":"8/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"UP",
+            "_formattedValue":"UP"
          },
          {
-            "_value":220,
-            "_formattedValue":"220.000"
+            "_value":26426.399999999998,
+            "_formattedValue":"26,426.40"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2020-08-01",
-            "_formattedValue":"8/1/2020"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":230,
-            "_formattedValue":"230.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2020-09-01",
             "_formattedValue":"9/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"UP",
+            "_formattedValue":"UP"
          },
          {
-            "_value":240,
-            "_formattedValue":"240.000"
+            "_value":26445,
+            "_formattedValue":"26,445.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2020-09-01",
-            "_formattedValue":"9/1/2020"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":250,
-            "_formattedValue":"250.000"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2020-10-01",
             "_formattedValue":"10/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"UP",
+            "_formattedValue":"UP"
          },
          {
-            "_value":300,
-            "_formattedValue":"300.000"
+            "_value":125,
+            "_formattedValue":"125.00"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2020-10-01",
-            "_formattedValue":"10/1/2020"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":145.56,
-            "_formattedValue":"145.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2020-11-01",
             "_formattedValue":"11/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"UP",
+            "_formattedValue":"UP"
          },
          {
-            "_value":155.56,
-            "_formattedValue":"155.560"
+            "_value":-0.987,
+            "_formattedValue":"-0.99"
          }
       ],
       [
          {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2020-11-01",
-            "_formattedValue":"11/1/2020"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":165.56,
-            "_formattedValue":"165.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
+            "_value":"India",
+            "_formattedValue":"India"
          },
          {
             "_value":"2020-12-01",
             "_formattedValue":"12/1/2020"
          },
          {
-            "_value":1,
-            "_formattedValue":"1"
+            "_value":"UP",
+            "_formattedValue":"UP"
          },
          {
-            "_value":175.56,
-            "_formattedValue":"175.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2020-12-01",
-            "_formattedValue":"12/1/2020"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":185.56,
-            "_formattedValue":"185.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
-         },
-         {
-            "_value":"2021-01-01",
-            "_formattedValue":"1/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":195.56,
-            "_formattedValue":"195.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2021-01-01",
-            "_formattedValue":"1/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":205.56,
-            "_formattedValue":"205.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
-         },
-         {
-            "_value":"2021-02-01",
-            "_formattedValue":"2/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":215.56,
-            "_formattedValue":"215.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2021-02-01",
-            "_formattedValue":"2/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":225.56,
-            "_formattedValue":"225.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
-         },
-         {
-            "_value":"2021-03-01",
-            "_formattedValue":"3/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":235.56,
-            "_formattedValue":"235.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2021-03-01",
-            "_formattedValue":"3/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":245.56,
-            "_formattedValue":"245.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
-         },
-         {
-            "_value":"2021-04-01",
-            "_formattedValue":"4/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":255.56,
-            "_formattedValue":"255.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2021-04-01",
-            "_formattedValue":"4/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":265.56,
-            "_formattedValue":"265.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
-         },
-         {
-            "_value":"2021-05-01",
-            "_formattedValue":"5/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":275.56,
-            "_formattedValue":"275.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2021-05-01",
-            "_formattedValue":"5/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":285.56,
-            "_formattedValue":"285.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
-         },
-         {
-            "_value":"2021-06-01",
-            "_formattedValue":"6/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":295.56,
-            "_formattedValue":"295.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2021-06-01",
-            "_formattedValue":"6/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":305.56,
-            "_formattedValue":"305.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
-         },
-         {
-            "_value":"2021-07-01",
-            "_formattedValue":"7/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":315.56,
-            "_formattedValue":"315.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2021-07-01",
-            "_formattedValue":"7/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":325.56,
-            "_formattedValue":"325.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
-         },
-         {
-            "_value":"2021-08-01",
-            "_formattedValue":"8/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":335.56,
-            "_formattedValue":"335.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2021-08-01",
-            "_formattedValue":"8/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":345.56,
-            "_formattedValue":"345.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
-         },
-         {
-            "_value":"2021-09-01",
-            "_formattedValue":"9/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":355.56,
-            "_formattedValue":"355.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2021-09-01",
-            "_formattedValue":"9/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":365.56,
-            "_formattedValue":"365.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
-         },
-         {
-            "_value":"2021-10-01",
-            "_formattedValue":"10/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":375.56,
-            "_formattedValue":"375.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2021-10-01",
-            "_formattedValue":"10/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":385.56,
-            "_formattedValue":"385.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
-         },
-         {
-            "_value":"2021-11-01",
-            "_formattedValue":"11/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":395.56,
-            "_formattedValue":"395.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2021-11-01",
-            "_formattedValue":"11/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":405.56,
-            "_formattedValue":"405.560"
-         }
-      ],
-      [
-         {
-            "_value":"Revenue",
-            "_formattedValue":"Revenue"
-         },
-         {
-            "_value":"2021-12-01",
-            "_formattedValue":"12/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":415.56,
-            "_formattedValue":"415.560"
-         }
-      ],
-      [
-         {
-            "_value":"Total Cost",
-            "_formattedValue":"Total Cost"
-         },
-         {
-            "_value":"2021-12-01",
-            "_formattedValue":"12/1/2021"
-         },
-         {
-            "_value":1,
-            "_formattedValue":"1"
-         },
-         {
-            "_value":425.56,
-            "_formattedValue":"425.560"
+            "_value":12345,
+            "_formattedValue":"12,345.00"
          }
       ]
    ],
    "_columns":[
       {
-         "_fieldName":"Measures",
+         "_fieldName":"Country",
          "_dataType":"string",
          "_isReferenced":true,
          "_index":0
@@ -1743,20 +1095,20 @@ let single_measure = [{
          "_index":1
       },
       {
-         "_fieldName":"Number of Records",
-         "_dataType":"int",
+         "_fieldName":"States",
+         "_dataType":"string",
          "_isReferenced":true,
          "_index":2
       },
       {
-         "_fieldName":"Values",
+         "_fieldName":"Measure 1",
          "_dataType":"float",
          "_isReferenced":true,
          "_index":3
       }
    ],
-   "_totalRowCount":96,
+   "_totalRowCount":60,
    "_isTotalRowCountLimited":false,
    "_isSummaryData":false,
    "_name":"Underlying Data Table"
-}]
+}
