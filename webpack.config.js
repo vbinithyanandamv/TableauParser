@@ -9,7 +9,7 @@ const modeConfig = env => require(`./webpack/webpack.${env.mode}`)(env);
 
 // Common webpack configuration
 const common = {
-    entry: './src/main.js',
+    entry: './src/dataParser.js',
     module: {
         rules:[
                 {

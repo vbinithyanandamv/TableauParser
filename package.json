@@ -10,7 +10,7 @@
     "start": "http-server -p 8080 -o ./dist/index.html"
   },
   "dependencies": {
-    "dayjs": "^1.8.17"
+    "dayjs": "1.8.6"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.2.1",
