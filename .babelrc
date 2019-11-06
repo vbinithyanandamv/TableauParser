@@ -1,0 +1,20 @@
+{
+    "presets": [
+        ["@babel/preset-env",
+            {
+                "useBuiltIns": "usage",
+                "targets": {
+                    "browsers": [
+                        "last 2 versions"
+                    ],
+                    "ie": 11
+                }
+            }
+        ]
+    ],
+    "plugins": [
+        "transform-es2015-modules-commonjs",
+        "@babel/proposal-class-properties",
+        "@babel/proposal-object-rest-spread"
+    ]
+}

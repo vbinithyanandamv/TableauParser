@@ -1,0 +1,33 @@
+{
+  "name": "VDT-Tableau",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "description": "Valq Tableau Extension",
+  "scripts": {
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "webpack --config webpack.config.js --env.mode dev && npm start",
+    "start": "http-server -p 8080 -o ./dist/index.html"
+  },
+  "dependencies": {
+    "dayjs": "^1.8.17"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-loader": "^8.0.4",
+    "browserslist": "^4.6.3",
+    "core-js": "^3.3.6",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-merge": "^4.2.2",
+    "http-server": "^0.11.1"
+  },
+  "author": "VisualBi"
+}
