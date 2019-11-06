@@ -1,26 +1,35 @@
 import { PeriodParser } from "./periodParser";
-export class DataParser {
-    
-    constructor() {
-        this.dataFormatMap = {
+
+let dataFormatMap = {  /* tslint:disable */
             "with_actual_data": with_actual_data,
             "no_periods": no_periods,
             "measure_as_category": measure_as_category,
             "no_category": no_category,
             "single_measure": single_measure
-        };
+};
+
+
+export interface IPeriodInfo {
+    type: string;
+    start: string | number;
+    sort: "ASC" | "DSC";
+    possibleTypes?: string[];
+}
+
+export class DataParser {
+    
+    constructor() {
+        
     }
 
-    transformPeriodData = (dataType,tableauData) => {
-        let categoryData = new Map();
+    private static transformPeriodData = (dataType,tableauData) => {
+        let categoryData :any = new Map();
         let periods = [];
 
 
 
         let periodDetector = new PeriodParser();
-        let periodTypeIndex = periodDetector.getPeriodType(tableauData[0]._data[0][3]._value);
-        let periodType = periodDetector.PeriodKeyTypes[periodTypeIndex];
-        let periodOrder = periodDetector.monthWeekFormats[periodType];
+        let periodOrder : any = periodDetector.getSortedOrder(tableauData[0]._data);
 
         //get all periods sepeartely
         tableauData[0]._data.map(data => {
@@ -144,12 +153,13 @@ export class DataParser {
         return props;
     };
 
-    transformnoPeriodData = (tableauData) => {
+    private static transformnoPeriodData = (tableauData) => {
         let period_length = tableauData[0]._columns.length - 1; //dimension length
         let number_of_periods = 12; //should be coming from editor
         let number_of_series = period_length / number_of_periods;
         let rows = new Map();
         let periods = [];
+        let i;
 
         //get periods
         for (i = 1; i <= period_length; i++) {
@@ -194,12 +204,12 @@ export class DataParser {
         return props;
     };
     convertData = (dataType) => {
-        let TableauData = this.dataFormatMap[dataType];
+        let TableauData = dataFormatMap[dataType];
         //series should be based on number of measures
         if (dataType === "with_actual_data" || dataType === "single_measure") {
-            return this.transformPeriodData(dataType,TableauData)
+            return DataParser.transformPeriodData(dataType,TableauData)
         }else if (dataType === "no_periods") {
-            return this.transformnoPeriodData(TableauData)
+            return DataParser.transformnoPeriodData(TableauData)
         }
     };
 }

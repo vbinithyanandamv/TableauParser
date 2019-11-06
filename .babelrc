@@ -10,7 +10,8 @@
                     "ie": 11
                 }
             }
-        ]
+        ],
+         "@babel/typescript"
     ],
     "plugins": [
         "transform-es2015-modules-commonjs",

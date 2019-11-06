@@ -9,11 +9,11 @@ const modeConfig = env => require(`./webpack/webpack.${env.mode}`)(env);
 
 // Common webpack configuration
 const common = {
-    entry: './src/dataParser.js',
+    entry: './src/dataParser.ts',
     module: {
         rules:[
                 {
-                    test: /\.js$/, //Regular expression 
+                    test: /\.js||.ts$/, //Regular expression 
                     exclude: /(node_modules|bower_components)/,//excluded node_modules 
                     use: {
                     loader: "babel-loader", 
