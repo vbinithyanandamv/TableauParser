@@ -9,12 +9,6 @@ let dataFormatMap = {  /* tslint:disable */
 };
 
 
-export interface IPeriodInfo {
-    type: string;
-    start: string | number;
-    sort: "ASC" | "DSC";
-    possibleTypes?: string[];
-}
 
 export class DataParser {
     
@@ -25,24 +19,18 @@ export class DataParser {
     private static transformPeriodData = (dataType,tableauData) => {
         let categoryData :any = new Map();
         let periods = [];
-
-
-
+        let periodsObj = [];
         let periodDetector = new PeriodParser();
-        let periodOrder : any = periodDetector.getSortedOrder(tableauData[0]._data);
-
-        //get all periods sepeartely
-        tableauData[0]._data.map(data => {
-            let periodData = {
-                id: data[3]._value,
-                label: data[3]._formattedValue
-            };
-            if (!periods.some(period => period.id === data[3]._value)) {
-                let periodValueIndex = periodOrder.indexOf(data[3]._value.toLowerCase());
-                periods[periodValueIndex] = periodData;
+       
+        //can be limited based on number of period
+        for (var i = 0; i < tableauData[0]._data.length; i++) {
+             const data =tableauData[0]._data[i];
+            if (!periods.some(period => period === data[3]._value)) {
+                periods.push(data[3]._value)
             }
-        });
+        }
 
+        let periodOrder : any = periodDetector.getSortedOrder(periods);
 
         let numberOfPeriods = periods.length; //can be get from editor also
         let level;
@@ -132,6 +120,18 @@ export class DataParser {
 
         let seriesNames = [];
 
+        for (var i = 0; i < tableauData[0]._data.length; i++) {
+             const data =tableauData[0]._data[i];
+             let periodData = {
+                id: data[3]._value,
+                label: data[3]._formattedValue
+            };
+            if (!periodsObj.some(period => period.id === data[3]._value)) {
+                periodsObj[periodOrder.indexOf(data[3]._value.toLowerCase())] = periodData
+            }
+        }
+
+
         if (dataType == "single_measure") {
             seriesNames = [tableauData[0]._columns[4]._fieldName];
         } else {
@@ -142,10 +142,10 @@ export class DataParser {
         }
 
         let props = {
-            periods: periods,
+            periods: periodsObj,
             rows: categoryData,
             metadata: {
-                periods: periods,
+                periods: periodsObj,
                 series: seriesNames
             }
         };
