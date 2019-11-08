@@ -6,8 +6,8 @@
   "description": "Valq Tableau Extension",
   "scripts": {
     "build:types": "tsc --emitDeclarationOnly",
-    "build": "webpack --config webpack.config.js --env.mode dev && npm start",
-    "start": "http-server -p 8080 -o ./dist/index.html"
+    "build": "webpack --config webpack.config.js --watch --env.mode dev",
+    "start": "webpack-dev-server --watch --env.mode dev --open"
   },
   "dependencies": {
     "dayjs": "1.8.6"
@@ -29,7 +29,8 @@
     "webpack-cli": "^3.3.10",
     "webpack-merge": "^4.2.2",
     "http-server": "^0.11.1",
-    "typescript": "^3.5.2"
+    "typescript": "^3.5.2",
+    "webpack-dev-server": "^3.9.0"
   },
   "author": "VisualBi"
 }

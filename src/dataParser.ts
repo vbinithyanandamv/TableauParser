@@ -1,53 +1,80 @@
 import { PeriodParser } from "./periodParser";
 
-let dataFormatMap = {  /* tslint:disable */
-            "with_actual_data": with_actual_data,
-            "no_periods": no_periods,
-            "measure_as_category": measure_as_category,
-            "no_category": no_category,
-            "single_measure": single_measure
-};
-
-
-
 export class DataParser {
-    
+
     constructor() {
-        
     }
 
-    private static transformPeriodData = (dataType,tableauData) => {
+    private static transformPeriodData = (options,tableauData) => {
         let categoryData :any = new Map();
         let periods = [];
         let periodsObj = [];
         let periodDetector = new PeriodParser();
+
+        //create data map here
+        let dataMapConfig = {
+            'hierMap':{},
+            'timePeriod':0,
+            'series':{}
+        };
+
+        //periods
+        let findColumnIndex = (field,index,columnMap) => {
+             for(let i=0;i<tableauData._columns.length;i++){
+                if(tableauData._columns[i]._fieldName === field){
+                    if(index !== undefined && index !== null){
+                        dataMapConfig[columnMap][index] = i;
+                    }else{
+                        dataMapConfig[columnMap] = i;
+                    }
+                }
+            }
+        }
+
+        options.category.map((field,index) => {
+            findColumnIndex(field,index,'hierMap')
+        });
+
+        options.values.map((field,index) => {
+            findColumnIndex(field,index,'series')
+        });
+
+        findColumnIndex(options.timePeriod,null,'timePeriod')
+
+        console.log(dataMapConfig);
        
-        //can be limited based on number of period
-        for (var i = 0; i < tableauData[0]._data.length; i++) {
-             const data =tableauData[0]._data[i];
-            if (!periods.some(period => period === data[3]._value)) {
-                periods.push(data[3]._value)
+        //can be limited based on number of periods
+        for (var i = 0; i < tableauData._data.length; i++) {
+            const data =tableauData._data[i];
+            let periodValue = typeof data[dataMapConfig.timePeriod]._value === 'string' ? data[dataMapConfig.timePeriod]._value.toLowerCase() : data[dataMapConfig.timePeriod]._value; 
+            if (!periods.some(period => period === periodValue)) {
+                periods.push(periodValue)
             }
         }
 
         let periodOrder : any = periodDetector.getSortedOrder(periods);
-
         let numberOfPeriods = periods.length; //can be get from editor also
-        let level;
-        let levelValue = {
-            0: 2,
-            1: 0
-        }; // data map need to be done based on data utility
+        let categoryIndex = dataMapConfig.hierMap;
+        let seriesIndex = dataMapConfig.series;
+        let timePeriodIndex = dataMapConfig.timePeriod;
 
-        tableauData[0]._data.map(data => {            
+        tableauData._data.map(data => {            
             
-            level = 1; //based on number of category
+            /**
+             based on number of category
+             for example 
+             Country,Region level should start with 0 (root already handled and we add children based on level 
+             which will be 0 hence add one level and decrement level will be -1 no more child)
+             Country,Region,Rep level should start with 1 (root already handled and level will be 1 add region decrement
+             level will be 0, add rep and decrement level will be -1 no more child)
+            **/ 
+            let level = options.category.length - 2; 
 
-            if (!categoryData.has(data[1]._value)) {
+            if (!categoryData.has(data[categoryIndex[0]]._value)) {
                 //First add root
-                categoryData.set(data[1]._value, {
-                    id: data[1]._value,
-                    label: data[1]._formattedValue,
+                categoryData.set(data[categoryIndex[0]]._value, {
+                    id: data[categoryIndex[0]]._value,
+                    label: data[categoryIndex[0]]._formattedValue,
                     children: new Map(),
                     series: [[], []],
                     parent: null
@@ -70,27 +97,26 @@ export class DataParser {
                 }
                 level--;
                 parent = parent.children.get(children._value);
-                return addChildren(parent, data[levelValue[level]]);
+                return addChildren(parent, data[dataMapConfig.hierMap[level]]);
             };
 
-            let leafChildren = addChildren(categoryData.get(data[1]._value), data[0]);
+            let leafChildren = addChildren(categoryData.get(data[categoryIndex[0]]._value), data[categoryIndex[1]]);
 
             //update data from children to parent
             let updateData = (node) => {
                 node.series[0] = !node.series[0] ? [] : node.series[0];
-                let periodValueIndex = periodOrder.indexOf(data[3]._value.toLowerCase());
+                let periodValue = typeof data[timePeriodIndex]._value === 'string' ? data[timePeriodIndex]._value.toLowerCase() : data[timePeriodIndex]._value;
+                let periodValueIndex = periodOrder.indexOf(periodValue);
                 if (!node.series[0][periodValueIndex]) {
-                    node.series[0][periodValueIndex] = data[4]._value;
-                    if (dataType !== "single_measure") {
+                    node.series[0][periodValueIndex] = data[seriesIndex[0]]._value;
+                    if (options.dataType !== "single_measure") {
                         node.series[1] = !node.series[1] ? [] : node.series[1];
-                        node.series[1][periodValueIndex] = data[5]._value;
+                        node.series[1][periodValueIndex] = data[seriesIndex[1]]._value;
                     }
                 } else {
-                    node.series[0][periodValueIndex] = node.series[0][periodValueIndex] + data[4]._value;
-                //    node.series[0].set(data[3]._value, budget);
-                    if (dataType !== "single_measure") {
-                        node.series[1][periodValueIndex] = node.series[1][periodValueIndex] + data[5]._value;
-                       // node.series[1].set(data[3]._value, forecast);
+                    node.series[0][periodValueIndex] = node.series[0][periodValueIndex] + data[seriesIndex[0]]._value;
+                    if (options.dataType !== "single_measure") {
+                        node.series[1][periodValueIndex] = node.series[1][periodValueIndex] + data[seriesIndex[1]]._value;
                     }
                 }
                 if (node.parent) {
@@ -120,24 +146,25 @@ export class DataParser {
 
         let seriesNames = [];
 
-        for (var i = 0; i < tableauData[0]._data.length; i++) {
-             const data =tableauData[0]._data[i];
+        for (var i = 0; i < tableauData._data.length; i++) {
+             const data =tableauData._data[i];
              let periodData = {
-                id: data[3]._value,
-                label: data[3]._formattedValue
+                id: data[timePeriodIndex]._value,
+                label: data[timePeriodIndex]._formattedValue
             };
-            if (!periodsObj.some(period => period.id === data[3]._value)) {
-                periodsObj[periodOrder.indexOf(data[3]._value.toLowerCase())] = periodData
+            if (!periodsObj.some(period => period.id === data[timePeriodIndex]._value)) {
+                let periodValue = typeof data[timePeriodIndex]._value === 'string' ? data[timePeriodIndex]._value.toLowerCase() : data[timePeriodIndex]._value; 
+                periodsObj[periodOrder.indexOf(periodValue)] = periodData
             }
         }
 
 
-        if (dataType == "single_measure") {
-            seriesNames = [tableauData[0]._columns[4]._fieldName];
+        if (options.dataType == "single_measure") {
+            seriesNames = [tableauData._columns[seriesIndex[0]]._fieldName];
         } else {
             seriesNames = [
-                tableauData[0]._columns[4]._fieldName,
-                tableauData[0]._columns[5]._fieldName
+                tableauData._columns[seriesIndex[0]]._fieldName,
+                tableauData._columns[seriesIndex[1]]._fieldName
             ];
         }
 
@@ -154,7 +181,7 @@ export class DataParser {
     };
 
     private static transformnoPeriodData = (tableauData) => {
-        let period_length = tableauData[0]._columns.length - 1; //dimension length
+        let period_length = tableauData._columns.length - 1; //dimension length
         let number_of_periods = 12; //should be coming from editor
         let number_of_series = period_length / number_of_periods;
         let rows = new Map();
@@ -164,10 +191,10 @@ export class DataParser {
         //get periods
         for (i = 1; i <= period_length; i++) {
             //i == count should be number of dimension
-            periods.push(tableauData[0]._columns[i]._fieldName);
+            periods.push(tableauData._columns[i]._fieldName);
         }
 
-        tableauData[0]._data.map(row_data => {
+        tableauData._data.map(row_data => {
             if (!rows.has(row_data[0]._value)) {
                 //First add root
                 rows.set(row_data[0]._value, {
@@ -203,12 +230,12 @@ export class DataParser {
         
         return props;
     };
-    convertData = (dataType) => {
-        let TableauData = dataFormatMap[dataType];
+    public convertData = (options,data) => {
+        let TableauData = data;
         //series should be based on number of measures
-        if (dataType === "with_actual_data" || dataType === "single_measure") {
-            return DataParser.transformPeriodData(dataType,TableauData)
-        }else if (dataType === "no_periods") {
+        if (options.dataType === "with_actual_data" || options.dataType === "single_measure") {
+            return DataParser.transformPeriodData(options,TableauData)
+        }else if (options.dataType === "no_periods") {
             return DataParser.transformnoPeriodData(TableauData)
         }
     };
