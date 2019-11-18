@@ -7,7 +7,7 @@
   "scripts": {
     "build:types": "tsc --emitDeclarationOnly",
     "build": "webpack --config webpack.config.js --watch --env.mode dev",
-    "start": "webpack-dev-server --watch --env.mode dev --open"
+    "start": "webpack-dev-server --env.mode dev --config webpack.config.js"
   },
   "dependencies": {
     "dayjs": "1.8.6"

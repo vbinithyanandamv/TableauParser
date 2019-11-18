@@ -1,18 +1,15 @@
 import { PeriodParser } from "./periodParser";
 
 export class DataParser {
+    private periodParser:any;
 
     constructor() {
+        this.periodParser = new PeriodParser();
     }
 
-    private static transformPeriodData = (options,tableauData) => {
-        let categoryData :any = new Map();
-        let periods = [];
-        let periodsObj = [];
-        let periodDetector = new PeriodParser();
+    private static DataUtilityTransform = (options,tableauData) => {
 
-        //create data map here
-        let dataMapConfig = {
+        let mapConfig = {
             'hierMap':{},
             'timePeriod':0,
             'series':{}
@@ -23,14 +20,19 @@ export class DataParser {
              for(let i=0;i<tableauData._columns.length;i++){
                 if(tableauData._columns[i]._fieldName === field){
                     if(index !== undefined && index !== null){
-                        dataMapConfig[columnMap][index] = i;
+                        mapConfig[columnMap][index] = i;
                     }else{
-                        dataMapConfig[columnMap] = i;
+                        mapConfig[columnMap] = i;
                     }
                 }
             }
         }
 
+        if(options.dataType === 'no_category'){
+            options.category = options.values;
+            options.series = options.values;
+        }
+        
         options.category.map((field,index) => {
             findColumnIndex(field,index,'hierMap')
         });
@@ -41,22 +43,34 @@ export class DataParser {
 
         findColumnIndex(options.timePeriod,null,'timePeriod')
 
-        console.log(dataMapConfig);
+        return mapConfig;
+    }
+
+    private static transformPeriodData = (options,tableauData,periodParser) => {
+        let categoryData :any = new Map();
+        let periods = [];
+        let periodsObj = []; //period with key and value
+        let seriesNames = [];
+
+        //create data map here
+        let dataMapConfig = DataParser.DataUtilityTransform(options,tableauData);
        
-        //can be limited based on number of periods
+        /* can not be limited based on number of periods since data source might change the order
+           so must have to loop over all elements
+        */
         for (var i = 0; i < tableauData._data.length; i++) {
-            const data =tableauData._data[i];
+            const data = tableauData._data[i];
             let periodValue = typeof data[dataMapConfig.timePeriod]._value === 'string' ? data[dataMapConfig.timePeriod]._value.toLowerCase() : data[dataMapConfig.timePeriod]._value; 
             if (!periods.some(period => period === periodValue)) {
                 periods.push(periodValue)
             }
         }
 
-        let periodOrder : any = periodDetector.getSortedOrder(periods);
-        let numberOfPeriods = periods.length; //can be get from editor also
+        let periodOrder : any = periodParser.getSortedOrder(periods);
         let categoryIndex = dataMapConfig.hierMap;
         let seriesIndex = dataMapConfig.series;
         let timePeriodIndex = dataMapConfig.timePeriod;
+        let numberOfSeries = Object.keys(dataMapConfig.series).length;
 
         tableauData._data.map(data => {            
             
@@ -73,12 +87,13 @@ export class DataParser {
             if (!categoryData.has(data[categoryIndex[0]]._value)) {
                 //First add root
                 categoryData.set(data[categoryIndex[0]]._value, {
-                    id: data[categoryIndex[0]]._value,
+                    id: data[categoryIndex[0]]._value.replace(/[^a-zA-Z0-9_]/g, "__"),
                     label: data[categoryIndex[0]]._formattedValue,
                     children: new Map(),
-                    series: [[], []],
+                    series: [],
                     parent: null
                 });
+
             }
 
             let addChildren = (parent, children) => {
@@ -88,7 +103,7 @@ export class DataParser {
                 }
                 if (!parent.children.has(children._value)) {
                     parent.children.set(children._value, {
-                        id: children._value,
+                        id: children._value.replace(/[^a-zA-Z0-9_]/g, "__"),
                         label: children._formattedValue,
                         children: new Map(),
                         series: [],
@@ -100,25 +115,23 @@ export class DataParser {
                 return addChildren(parent, data[dataMapConfig.hierMap[level]]);
             };
 
+
             let leafChildren = addChildren(categoryData.get(data[categoryIndex[0]]._value), data[categoryIndex[1]]);
+            
 
             //update data from children to parent
-            let updateData = (node) => {
-                node.series[0] = !node.series[0] ? [] : node.series[0];
-                let periodValue = typeof data[timePeriodIndex]._value === 'string' ? data[timePeriodIndex]._value.toLowerCase() : data[timePeriodIndex]._value;
-                let periodValueIndex = periodOrder.indexOf(periodValue);
-                if (!node.series[0][periodValueIndex]) {
-                    node.series[0][periodValueIndex] = data[seriesIndex[0]]._value;
-                    if (options.dataType !== "single_measure") {
-                        node.series[1] = !node.series[1] ? [] : node.series[1];
-                        node.series[1][periodValueIndex] = data[seriesIndex[1]]._value;
+            let updateData = (node) => { 
+                for(let i=0; i<numberOfSeries; i++){
+                    seriesNames.push(tableauData._columns[seriesIndex[i]]._fieldName)
+                    node.series[i] = !node.series[i] ? [] : node.series[i];
+                    let periodValue = typeof data[timePeriodIndex]._value === 'string' ? data[timePeriodIndex]._value.toLowerCase() : data[timePeriodIndex]._value;
+                    let periodValueIndex = periodOrder.indexOf(periodValue);
+                    if (!node.series[i][periodValueIndex]) {
+                        node.series[i][periodValueIndex] = typeof data[seriesIndex[i]]._value === 'number' ? data[seriesIndex[i]]._value : 0;
+                    } else {
+                        node.series[i][periodValueIndex] = node.series[i][periodValueIndex] + (typeof data[seriesIndex[i]]._value === 'number' ? data[seriesIndex[i]]._value : 0);
                     }
-                } else {
-                    node.series[0][periodValueIndex] = node.series[0][periodValueIndex] + data[seriesIndex[0]]._value;
-                    if (options.dataType !== "single_measure") {
-                        node.series[1][periodValueIndex] = node.series[1][periodValueIndex] + data[seriesIndex[1]]._value;
-                    }
-                }
+                }               
                 if (node.parent) {
                     updateData(node.parent);
                 }
@@ -144,8 +157,6 @@ export class DataParser {
             maptoArray(node);
         });
 
-        let seriesNames = [];
-
         for (var i = 0; i < tableauData._data.length; i++) {
              const data =tableauData._data[i];
              let periodData = {
@@ -158,14 +169,81 @@ export class DataParser {
             }
         }
 
+        let props = {
+            periods: periodsObj,
+            rows: categoryData,
+            metadata: {
+                periods: periodsObj,
+                series: [seriesNames]
+            }
+        };
 
-        if (options.dataType == "single_measure") {
-            seriesNames = [tableauData._columns[seriesIndex[0]]._fieldName];
-        } else {
-            seriesNames = [
-                tableauData._columns[seriesIndex[0]]._fieldName,
-                tableauData._columns[seriesIndex[1]]._fieldName
-            ];
+        return props;
+    };
+
+    private static transformNoCategoryData = (options,tableauData,periodParser) => {
+        let categoryData = [];
+        let periods = [];
+        let periodsObj = []; //period with key and value
+
+        //create data map here
+        let dataMapConfig = DataParser.DataUtilityTransform(options,tableauData);
+       
+        /* can not be limited based on number of periods since data source might change the order
+           so must have to loop over all elements
+        */
+        for (var i = 0; i < tableauData._data.length; i++) {
+            const data = tableauData._data[i];
+            let periodValue = typeof data[dataMapConfig.timePeriod]._value === 'string' ? data[dataMapConfig.timePeriod]._value.toLowerCase() : data[dataMapConfig.timePeriod]._value; 
+            if (!periods.some(period => period === periodValue)) {
+                periods.push(periodValue)
+            }
+        }
+
+        let periodOrder : any = periodParser.getSortedOrder(periods);
+        let categoryIndex = dataMapConfig.hierMap;
+        let timePeriodIndex = dataMapConfig.timePeriod;
+        let numberofCategory =  Object.keys(dataMapConfig.hierMap).length; //should consider measuer as category if no category
+
+
+        let measureAsCategory = tableauData._columns;
+     
+        for(let i=0; i < numberofCategory; i++){
+            if (!categoryData.some(category => category.id === measureAsCategory[categoryIndex[i]]._fieldName)) {
+                //First add root
+                categoryData.push({
+                    id: measureAsCategory[categoryIndex[i]]._fieldName.replace(/[^a-zA-Z0-9_]/g, "__"),
+                    label: measureAsCategory[categoryIndex[i]]._fieldName,
+                    series: []
+                });
+
+            }
+        } 
+
+        tableauData._data.map(data => {  
+            for(let i=0; i < numberofCategory; i++){
+                let node = categoryData[i];
+                node.series[0] = !node.series[0] ? [] : node.series[0];
+                let periodValue = typeof data[timePeriodIndex]._value === 'string' ? data[timePeriodIndex]._value.toLowerCase() : data[timePeriodIndex]._value;
+                let periodValueIndex = periodOrder.indexOf(periodValue);
+                if (!node.series[0][periodValueIndex]) {
+                    node.series[0][periodValueIndex] = typeof data[categoryIndex[i]]._value === 'number' ? data[categoryIndex[i]]._value : 0;
+                } else {
+                    node.series[0][periodValueIndex] = node.series[0][periodValueIndex] + (typeof data[categoryIndex[i]]._value === 'number' ? data[categoryIndex[i]]._value : 0);
+                }
+            }
+        });
+        
+        for (var i = 0; i < tableauData._data.length; i++) {
+             const data =tableauData._data[i];
+             let periodData = {
+                id: data[timePeriodIndex]._value,
+                label: data[timePeriodIndex]._formattedValue
+            };
+            if (!periodsObj.some(period => period.id === data[timePeriodIndex]._value)) {
+                let periodValue = typeof data[timePeriodIndex]._value === 'string' ? data[timePeriodIndex]._value.toLowerCase() : data[timePeriodIndex]._value; 
+                periodsObj[periodOrder.indexOf(periodValue)] = periodData
+            }
         }
 
         let props = {
@@ -173,17 +251,15 @@ export class DataParser {
             rows: categoryData,
             metadata: {
                 periods: periodsObj,
-                series: seriesNames
+                series: ['series 1']
             }
         };
-
+        
         return props;
     };
 
-    private static transformnoPeriodData = (tableauData) => {
+    private static transformNoPeriodData = (tableauData) => {
         let period_length = tableauData._columns.length - 1; //dimension length
-        let number_of_periods = 12; //should be coming from editor
-        let number_of_series = period_length / number_of_periods;
         let rows = new Map();
         let periods = [];
         let i;
@@ -198,7 +274,7 @@ export class DataParser {
             if (!rows.has(row_data[0]._value)) {
                 //First add root
                 rows.set(row_data[0]._value, {
-                    id: row_data[0]._value,
+                    id: row_data[0]._value.replace(/[^a-zA-Z0-9_]/g, "__"),
                     label: row_data[0]._formattedValue,
                     series: []
                 });
@@ -210,8 +286,7 @@ export class DataParser {
                 let seriesIndex = Math.ceil(i / 12) - 1;
                 let currentRow = rows.get(row_data[0]._value);
                 currentRow.series[seriesIndex] = currentRow.series[seriesIndex] ?
-                    currentRow.series[seriesIndex] :
-                    [];
+                    currentRow.series[seriesIndex] : [];
                 currentRow.series[seriesIndex].push(row_data[i]._value);
             }
         });
@@ -224,19 +299,22 @@ export class DataParser {
             rows: Array.from(rows.values()),
             metadata: {
                 periods: periods,
-                series: []
+                series: [[]]
             }
         };
         
         return props;
     };
+
     public convertData = (options,data) => {
         let TableauData = data;
         //series should be based on number of measures
         if (options.dataType === "with_actual_data" || options.dataType === "single_measure") {
-            return DataParser.transformPeriodData(options,TableauData)
+            return DataParser.transformPeriodData(options,TableauData,this.periodParser)
+        }else if(options.dataType === "no_category"){
+            return DataParser.transformNoCategoryData(options,TableauData,this.periodParser)
         }else if (options.dataType === "no_periods") {
-            return DataParser.transformnoPeriodData(TableauData)
+            return DataParser.transformNoPeriodData(TableauData)
         }
     };
 }

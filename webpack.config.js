@@ -36,6 +36,14 @@ const common = {
         libraryTarget: 'umd',
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
+    },
+    watchOptions: {
+        aggregateTimeout: 10000,
+    },
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 4344
     }
 };
 
